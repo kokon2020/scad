@@ -4,10 +4,31 @@
 // V. 0.2, 19 NPV 2018
 
 //PARAMETERS 
-coin_d=23.88;
-coin_th=1.58; 
+$fa=1;
+$fs=1;
+quater_d=23.88; // diameter of a quater
+quater_th=1.58; //thickness of a quater
+penny_d=19.05;
+penny_th=1.45; 
 gap=1;
 
+//render
+trap(quater_d,quater_th);
+translate([0,-30,0]) trap(penny_d,penny_th);
+!base(quarter_d);
+
+// modules
+module base(coin_d){
+    difference(){
+    sphere(d=coin_d);
+    translate([0,0,-coin_d/2]) cube(size=[coin_d*1.1,coin_d*1.1,coin_d], center=true);
+}
+}
+module coin (coin_d,coin_th){
+%cylinder(d=coin_d,h=coin_th,center=true);
+}
+module trap (coin_d,coin_th){
+}
 // the coin
 %cylinder(d=coin_d, h=coin_th, center=true);
 
@@ -28,6 +49,3 @@ difference(){
     translate([0,0,coin_d*0.85]) sphere(d=coin_d);
     translate([0,0,coin_d*-0.85]) sphere(d=coin_d);
 }
-
-
-    
